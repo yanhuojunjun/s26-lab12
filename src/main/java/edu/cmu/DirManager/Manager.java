@@ -11,10 +11,10 @@ public class Manager {
      * @throws Exception if the path is invalid
      */
     public void newDirectory(String path) throws Exception {
-        if (dirOps.checkDirectoryExists(path)) {
-            throw new Exception("Directory Exists: " + path);
-        } else if (!dirOps.checkPathValid(path)) {
+        if (!dirOps.checkPathValid(path)) {
             throw new Exception("Invalid Path: " + path);
+        } else if (dirOps.checkDirectoryExists(path)) {
+            throw new Exception("Directory Exists: " + path);
         } else {
             dirOps.createDirectory(path);
         }
