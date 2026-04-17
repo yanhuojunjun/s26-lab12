@@ -7,18 +7,16 @@ public class Manager {
      * Creates a new directory at the specified path.
      *
      * @param path the path where the new directory should be created
-     * @return 0 if the directory creation was successful
-     *        -1 if the directory already exists,
-     *        -2 if the path is invalid
+     * @throws Exception if the directory already exists at the given path
+     * @throws Exception if the path is invalid
      */
-    public int newDirectory(String path) {
+    public void newDirectory(String path) throws Exception {
         if (dirOps.checkDirectoryExists(path)) {
-            return -1;
+            throw new Exception("Directory Exists: " + path);
         } else if (!dirOps.checkPathValid(path)) {
-            return -2;
+            throw new Exception("Invalid Path: " + path);
         } else {
             dirOps.createDirectory(path);
-            return 0;
         }
     }
 }
