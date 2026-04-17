@@ -9,7 +9,7 @@ public class Weather {
      *
      * @param inches if true, sets the scale to inches; if false, sets the scale to millimeters.
      */
-    public void setLengthScale(boolean inches) {
+    public void setLengthScaleToInches(boolean inches) {
         this.inches = inches;
     }
 
@@ -22,9 +22,9 @@ public class Weather {
     public double getRainfall() {
         double wsRainfall = weatherService.getRainfall();
         if (inches) {
-            return wsRainfall / 25.4;
-        } else {
             return wsRainfall;
+        } else {
+            return wsRainfall * 25.4;
         }
     }
 }
